@@ -1,0 +1,17 @@
+git 問題:
+unable to access 'https://github.com/xxxxx.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+解決方式:
+方法1 取消 git 对 SSL 的检验。 git config --global http.sslVerify "false"
+方法2 添加ssh
+
+ssh密钥的相关配置:
+1.首先找到.ssh文件夹，一般都是在C盘/用户/（用户名）的文件夹里面
+在这个.ssh文件夹中 右键打开gitbash 输入:
+$ ssh-keygen -t rsa -C "your@email.com"（请填你设置的邮箱地址）
+接着出现:
+Generating public/private rsa key pair.
+
+Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):
+直接按下回车 遇到设置密码也不要设置 直接回车 若过程中出现 Are you …的问题，一定要填yes，不要直接回车。
+2.将里面内容将全部的内容复制 到git仓库的 SSH密钥的 密钥内容中 ，密钥名称随便
+3.设置好SSH密钥之后 我们要注意，将项目git clone到本地文件夹中时，一定要复制SSH的连接
